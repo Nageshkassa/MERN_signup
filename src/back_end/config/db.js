@@ -1,25 +1,19 @@
-const mongoose = require("mongoose");
+const mongoose = require('mongoose');
+const connect=async (app)=>{
+    try{
+        await mongoose.connect(process.env.MONGO_URL);
+        console.log("mongo connection successful..");
+        await app.listen(process.env.PORT,()=>{
+         
+                console.log(`server is listening on port ${process.env.PORT}`);
 
-module.exports = async (server) => {
-  try {
-
-console.log("Mongo URI:", process.env.NODE_ENV);
-    await mongoose.connect('mongodb://localhost:27017/sample', {
-      useNewUrlParser: true,
-      useUnifiedTopology: true,
-    });
-    console.log("MongoDB connection successful..");
-
-    // Listening to server
-    await server.listen(5000, () =>
-      console.log(
-        `Server running on ${process.env.NODE_ENV} mode, port 5000}..`
-          .cyan.bold
-      )
-    );
-  } catch (error) {
-    console.log("MongoDB connection failed..".red);
-    console.error(error);
-    process.exit(1);
-  }
-};
+        });
+    }
+    
+    catch (error) {
+        console.log("mongo connection failed..");
+        console.log(error,);
+        process.exit(1);
+      }
+}
+module.exports=connect;

@@ -3,6 +3,10 @@ h2{
   text-align: center;
 
 }
+span{
+  cursor: pointer;
+}
+
 .home-container{
   display: flex;
   padding: 10px 20px;
@@ -10,8 +14,8 @@ h2{
 }
 .navbar {
   display: flex;
-  background-color: black;
-  color: white;
+  background-color: #9ED2BE;
+
   width: 100%;
   padding: 15px 20px;
   text-align: center;
@@ -23,6 +27,9 @@ h2{
   max-width: 1200px;
   display: flex;
   justify-content: center;
+}
+.signuplink{
+  color: black;
 }
 a {
   text-decoration:none;
